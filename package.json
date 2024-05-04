@@ -9,7 +9,7 @@
 		"paths": "tscpaths -p tsconfig.json -s ./src -o ./dist",
 		"copy:macos": "copyfiles --error --up 1 src/assets/*.* dist && cp package.json dist/",
 		"copy:win": "copyfiles --error --up 1 src/assets/*.* dist && @powershell copy './package.json' './dist'",
-		"start": "pnpm run build && pnpm run copy && pnpm run paths && electron dist/index.js",
+		"start": "pnpm run build && pnpm run copy && pnpm run paths && npx electron dist/index.js",
 		"build:macos": "tsc && pnpm run copy:macos && pnpm run paths && electron-builder -c 'configs/builder/macos.json'",
 		"build:win": "tsc && pnpm run copy:win && pnpm run paths && npm exec electron-rebuild && npm exec -- electron-builder -c configs/builder/windows.json",
 		"build:ci:macos": "tsc && pnpm run copy:macos && pnpm run paths && electron-builder -c configs/builder/macos.json -p never",
